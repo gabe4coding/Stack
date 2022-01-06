@@ -109,40 +109,83 @@ extension Stack {
 
 ///Usage
 class StackTest: XCTestCase {
-    func testArray() {
+    
+    func testMemoryAllocationArray() {
         measure {
-            let stack = StackArray<String>()
-
+            _ = StackArray<String>()
+        }
+    }
+    
+    func testMemoryAllocationLinkedList() {
+        measure {
+            _ = StackLinkedList<String>()
+        }
+    }
+    
+    func testArrayPerformance() {
+        let stack = StackArray<String>()
+        measure {
             Task {
                 await stack.push(element: "Third")
                 await stack.pop()
                 await stack.pop()
                 await stack.isEmpty()
-                await stack.pushDouble(first: "First", second: "Second")
+                await stack.push(element: "Second")
+                await stack.push(element: "Third")
                 await stack.isEmpty()
-                await stack.popDouble()
                 await stack.isEmpty()
                 await stack.pop()
-                
             }
         }
     }
     
-    func testLinkedList() {
+    func testLinkedListPerformance() {
+        let stack = StackLinkedList<String>()
         measure {
-            let stack = StackLinkedList<String>()
-
             Task {
                 await stack.push(element: "Third")
                 await stack.pop()
                 await stack.pop()
                 await stack.isEmpty()
-                await stack.pushDouble(first: "First", second: "Second")
+                await stack.push(element: "Second")
+                await stack.push(element: "Third")
                 await stack.isEmpty()
-                await stack.popDouble()
                 await stack.isEmpty()
                 await stack.pop()
-                
+            }
+        }
+    }
+    
+    func testArrayCPU() {
+        let stack = StackArray<String>()
+        measure(metrics: [XCTCPUMetric()]) {
+            Task {
+                await stack.push(element: "Third")
+                await stack.pop()
+                await stack.pop()
+                await stack.isEmpty()
+                await stack.push(element: "Second")
+                await stack.push(element: "Third")
+                await stack.isEmpty()
+                await stack.isEmpty()
+                await stack.pop()
+            }
+        }
+    }
+    
+    func testLinkedListCPU() {
+        let stack = StackLinkedList<String>()
+        measure(metrics: [XCTCPUMetric()]) {
+            Task {
+                await stack.push(element: "Third")
+                await stack.pop()
+                await stack.pop()
+                await stack.isEmpty()
+                await stack.push(element: "Second")
+                await stack.push(element: "Third")
+                await stack.isEmpty()
+                await stack.isEmpty()
+                await stack.pop()
             }
         }
     }
