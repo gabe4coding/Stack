@@ -10,6 +10,9 @@ I've basically extended that test doing:
 - Transformation of these structures in Actors, relying on the async/await introuduced in Swift 5.5, to manage race conditions.
 - A TestCase which measures the performances of some operations done on both the structures.
 
+### References
+- A good comparison between LinkedList and Array: [Linked List vs Array](https://www.studytonight.com/data-structures/linked-list-vs-array)
+
 ## Measurements
 
 ### CPU (Using Actors)
