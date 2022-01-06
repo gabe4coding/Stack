@@ -2,7 +2,8 @@
 
 A Case study to measure the performances of different data structures (Array and LinkedList), to implement a LIFO Stack.
 
-After an excercise asked me during an interview (Implement a basic LIFO Stack with push(), pop() and isEmpty() methods), i developed an interest on the performances of data structures when you perform this kind of operations. In the test i've used an Array as data structure.
+I've started implementing a basic exercise (Implement a basic LIFO Stack with push(), pop() and isEmpty() methods). 
+Then i developed an interest on the performances of data structures when you perform this kind of operations. In the test i've used an Array as data structure.
 
 I've basically extended that test doing:
 - A protocol called 'Stack' which asks to implement pop(), push() and isEmpty()
